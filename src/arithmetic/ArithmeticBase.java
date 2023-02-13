@@ -13,27 +13,29 @@ import java.util.Scanner;
  * @author sivagamasrinivasan
  * 
  */
-public class ArithmeticBase 
-{
+public class ArithmeticBase {
+    public enum Operation{
+        PLUS,
+        MINUS,
+        TIMES,
+        DIVIDE;
+    }
  public double x,y;
-    double calculate(double x, double y) 
-        {
+    double calculate(double x, double y) {
         Scanner sc =new Scanner(System.in);
         System.out.println("Enter arithmetic operation to Perform: ");
-        String s= sc.next();
-        switch (s.toUpperCase()) 
-        {
-            case "PLUS":
+        Operation operation = Operation.valueOf(sc.next().toUpperCase());
+         switch (operation) {
+            case PLUS:
                 return x + y;
-            case "MINUS":
+            case MINUS:
                 return x - y;
-            case "TIMES":
+            case TIMES:
                 return x * y;
-            case "DIVIDE":
+            case DIVIDE:
                 return x / y;
             default:
-                throw new AssertionError("Unknown operations " + this);
+                throw new AssertionError("Unknown operation " + operation);
         }
     }
-   
 }
